@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thinkcode
+  labels:
+    app: thinkcode
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: thinkcode
+  template:
+    metadata:
+      labels:
+        app: thinkcode
+    spec:
+      containers:
+        - name: thinkcode
+          image: thinkcode:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
