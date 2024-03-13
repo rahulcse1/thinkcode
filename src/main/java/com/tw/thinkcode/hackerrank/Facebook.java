@@ -2,7 +2,6 @@ package com.tw.thinkcode.hackerrank;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Facebook {
     double powFun(double x, int n) {
@@ -150,7 +149,7 @@ public class Facebook {
 
 
     public static void main(String[] args) {
-        String input = "Zebra-493?";
+        //String input = "Zebra-493?";
         Facebook facebook = new Facebook();
         var wordDict = new ArrayList<String>();
         wordDict.add("leet");

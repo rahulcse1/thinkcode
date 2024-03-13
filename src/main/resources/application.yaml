@@ -1,0 +1,6 @@
+api-uri: https://interview.dev.lab.o2online.de/api/{input}
+management:
+  endpoints:
+    shutdown:
+      enabled: true
+    
