@@ -7,8 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Result {
 
-	private long input;
-	private String calculation;
-	private long result;
-
+  private long input;
+  private String calculation;
+  private long result;
 }

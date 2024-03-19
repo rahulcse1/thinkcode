@@ -2,12 +2,12 @@ package com.tw.thinkcode.year24;
 
 @FunctionalInterface
 interface MyFunctionalInterface {
-    void myMethod();
+  void myMethod();
 }
 
 public class FunctionalDemo {
-    public static void main(String[] args) {
-        MyFunctionalInterface myFunctionalInterface = () -> System.out.println("Hello World");
-        myFunctionalInterface.myMethod();
-    }   
+  public static void main(String[] args) {
+    MyFunctionalInterface myFunctionalInterface = () -> System.out.println("Hello World");
+    myFunctionalInterface.myMethod();
+  }
 }

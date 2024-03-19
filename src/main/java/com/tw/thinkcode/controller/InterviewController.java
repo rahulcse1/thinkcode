@@ -15,17 +15,17 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/api")
 public class InterviewController {
 
-	private final RestTemplate restTemplate;
-	private final String apiUri;
+  private final RestTemplate restTemplate;
+  private final String apiUri;
 
-	public InterviewController(RestTemplate restTemplate, @Value("${api-uri}") String apiUri) {
-		this.restTemplate = restTemplate;
-		this.apiUri = apiUri;
-	}
+  public InterviewController(RestTemplate restTemplate, @Value("${api-uri}") String apiUri) {
+    this.restTemplate = restTemplate;
+    this.apiUri = apiUri;
+  }
 
-	@GetMapping("/calculate/{randomNumber}")
-	public Result calculate(@PathVariable int randomNumber) {
-		ApiResponse resp = restTemplate.getForObject(apiUri, ApiResponse.class, randomNumber);
-		return resp.resolve(randomNumber);
-	}
+  @GetMapping("/calculate/{randomNumber}")
+  public Result calculate(@PathVariable int randomNumber) {
+    ApiResponse resp = restTemplate.getForObject(apiUri, ApiResponse.class, randomNumber);
+    return resp.resolve(randomNumber);
+  }
 }

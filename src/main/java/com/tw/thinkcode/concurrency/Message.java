@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 @Builder
 public class Message {
-    private String message;
+  private String message;
 }

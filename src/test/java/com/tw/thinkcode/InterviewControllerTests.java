@@ -26,36 +26,35 @@ import org.springframework.web.client.RestTemplate;
 @ActiveProfiles("test")
 class InterviewControllerTests {
 
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Autowired
-	private MockMvc mockMvc;
+  @Autowired private RestTemplate restTemplate;
 
-	private MockRestServiceServer mockServer;
+  @Autowired private MockMvc mockMvc;
 
-	@BeforeEach
-	public void attachMockServer() {
-		mockServer = MockRestServiceServer.bindTo(restTemplate).build();
-	}
+  private MockRestServiceServer mockServer;
 
-	@AfterEach
-	public void verifyAndResetMockServer() {
-		mockServer.verify();
-		mockServer.reset();
-	}
+  @BeforeEach
+  public void attachMockServer() {
+    mockServer = MockRestServiceServer.bindTo(restTemplate).build();
+  }
 
-	@Test
-	void resolvesExercise() throws Exception {
-		mockServer.expect(method(HttpMethod.GET))
-			.andExpect(requestTo("http://unit-test/api/320"))
-			.andRespond(withSuccess("{\"a\":62,\"op\":\"+\",\"b\":14}\n", MediaType.APPLICATION_JSON));
+  @AfterEach
+  public void verifyAndResetMockServer() {
+    mockServer.verify();
+    mockServer.reset();
+  }
 
-		mockMvc.perform(get("/api/calculate/320"))
-			.andExpect(status().isOk())
-			.andExpect(jsonPath("$.input").value(320))
-			.andExpect(jsonPath("$.calculation").value("62 + 14 = 76"))
-			.andExpect(jsonPath("$.result").value(76));
-	}
+  @Test
+  void resolvesExercise() throws Exception {
+    mockServer
+        .expect(method(HttpMethod.GET))
+        .andExpect(requestTo("http://unit-test/api/320"))
+        .andRespond(withSuccess("{\"a\":62,\"op\":\"+\",\"b\":14}\n", MediaType.APPLICATION_JSON));
 
+    mockMvc
+        .perform(get("/api/calculate/320"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.input").value(320))
+        .andExpect(jsonPath("$.calculation").value("62 + 14 = 76"))
+        .andExpect(jsonPath("$.result").value(76));
+  }
 }
